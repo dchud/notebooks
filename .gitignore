@@ -1,0 +1,4 @@
+ENV
+*.swp
+*.html
+.ipynb_checkpoints
