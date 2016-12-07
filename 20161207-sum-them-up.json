@@ -1,0 +1,189 @@
+{
+  "paragraphs": [
+    {
+      "config": {
+        "colWidth": 12,
+        "graph": {
+          "mode": "table",
+          "height": 300,
+          "optionOpen": false,
+          "keys": [],
+          "values": [],
+          "groups": [],
+          "scatter": {}
+        },
+        "enabled": true,
+        "editorMode": "ace/mode/scala"
+      },
+      "settings": {
+        "params": {},
+        "forms": {}
+      },
+      "jobName": "paragraph_1481139420859_-1606512285",
+      "id": "20161207-193700_330381726",
+      "dateCreated": "2016-12-07T19:37:00+0000",
+      "status": "FINISHED",
+      "progressUpdateIntervalMs": 500,
+      "focus": true,
+      "$$hashKey": "object:314",
+      "text": "%pyspark\nedgefiles = sc.textFile('s3://chudco-lctest-extract/special49_20160706/*.warc.gz.outlinks.json.gz.csv.gz')\nall_edges = edgefiles.map(lambda line: line.split(',')).cache()",
+      "dateUpdated": "2016-12-07T20:02:00+0000",
+      "dateFinished": "2016-12-07T20:02:00+0000",
+      "dateStarted": "2016-12-07T20:02:00+0000",
+      "result": {
+        "code": "SUCCESS",
+        "type": "TEXT",
+        "msg": ""
+      }
+    },
+    {
+      "config": {
+        "colWidth": 12,
+        "graph": {
+          "mode": "table",
+          "height": 300,
+          "optionOpen": false,
+          "keys": [],
+          "values": [],
+          "groups": [],
+          "scatter": {}
+        },
+        "enabled": true,
+        "editorMode": "ace/mode/python"
+      },
+      "settings": {
+        "params": {},
+        "forms": {}
+      },
+      "jobName": "paragraph_1481139719857_-649781332",
+      "id": "20161207-194159_1778776035",
+      "dateCreated": "2016-12-07T19:41:59+0000",
+      "status": "FINISHED",
+      "progressUpdateIntervalMs": 500,
+      "focus": true,
+      "$$hashKey": "object:426",
+      "dateUpdated": "2016-12-07T20:02:03+0000",
+      "dateFinished": "2016-12-07T20:02:03+0000",
+      "dateStarted": "2016-12-07T20:02:03+0000",
+      "result": {
+        "code": "SUCCESS",
+        "type": "TEXT",
+        "msg": ""
+      },
+      "text": "%pyspark\nall_counts = all_edges.map(lambda e: ((e[0], e[1]), 1))\nsum_all_counts = all_counts.reduceByKey(lambda a, b: a + b).sortBy(lambda a: -a[1], numPartitions=1)"
+    },
+    {
+      "config": {
+        "colWidth": 12,
+        "graph": {
+          "mode": "table",
+          "height": 300,
+          "optionOpen": false,
+          "keys": [],
+          "values": [],
+          "groups": [],
+          "scatter": {}
+        },
+        "enabled": true,
+        "editorMode": "ace/mode/python"
+      },
+      "settings": {
+        "params": {},
+        "forms": {}
+      },
+      "jobName": "paragraph_1481139755696_488167997",
+      "id": "20161207-194235_816196855",
+      "dateCreated": "2016-12-07T19:42:35+0000",
+      "status": "FINISHED",
+      "progressUpdateIntervalMs": 500,
+      "focus": true,
+      "$$hashKey": "object:496",
+      "dateUpdated": "2016-12-07T20:02:06+0000",
+      "dateFinished": "2016-12-07T20:02:15+0000",
+      "dateStarted": "2016-12-07T20:02:06+0000",
+      "result": {
+        "code": "SUCCESS",
+        "type": "TEXT",
+        "msg": "28881847\n"
+      },
+      "text": "%pyspark\nall_edges.count()"
+    },
+    {
+      "config": {
+        "colWidth": 12,
+        "graph": {
+          "mode": "table",
+          "height": 300,
+          "optionOpen": false,
+          "keys": [],
+          "values": [],
+          "groups": [],
+          "scatter": {}
+        },
+        "enabled": true,
+        "editorMode": "ace/mode/python"
+      },
+      "settings": {
+        "params": {},
+        "forms": {}
+      },
+      "jobName": "paragraph_1481139871036_1911871388",
+      "id": "20161207-194431_411240752",
+      "dateCreated": "2016-12-07T19:44:31+0000",
+      "status": "FINISHED",
+      "progressUpdateIntervalMs": 500,
+      "focus": true,
+      "$$hashKey": "object:574",
+      "dateUpdated": "2016-12-07T20:02:19+0000",
+      "dateFinished": "2016-12-07T20:02:40+0000",
+      "dateStarted": "2016-12-07T20:02:19+0000",
+      "result": {
+        "code": "SUCCESS",
+        "type": "TEXT",
+        "msg": ""
+      },
+      "text": "%pyspark\nsum_all_counts.saveAsTextFile(\"s3://chudco-lctest-extract/special49_20160706/all_counts.txt\")"
+    },
+    {
+      "config": {
+        "colWidth": 12,
+        "graph": {
+          "mode": "table",
+          "height": 300,
+          "optionOpen": false,
+          "keys": [],
+          "values": [],
+          "groups": [],
+          "scatter": {}
+        },
+        "enabled": true
+      },
+      "settings": {
+        "params": {},
+        "forms": {}
+      },
+      "jobName": "paragraph_1481140056311_-1360324418",
+      "id": "20161207-194736_1528487538",
+      "dateCreated": "2016-12-07T19:47:36+0000",
+      "status": "READY",
+      "progressUpdateIntervalMs": 500,
+      "focus": true,
+      "$$hashKey": "object:675",
+      "dateUpdated": "2016-12-07T19:47:57+0000",
+      "text": ""
+    }
+  ],
+  "name": "sum-them-up",
+  "id": "2C4EZBBC2",
+  "angularObjects": {
+    "2BRWU4WXC:shared_process": [],
+    "2AM1YV5CU:shared_process": [],
+    "2AJXGMUUJ:shared_process": [],
+    "2ANGGHHMQ:shared_process": [],
+    "2AKK3QQXU:shared_process": []
+  },
+  "config": {
+    "looknfeel": "default"
+  },
+  "info": {}
+}
